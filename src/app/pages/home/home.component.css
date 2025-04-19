@@ -7,23 +7,23 @@
     width: 70%;
     height: 80%;
     padding: 30px;
-    background-color: #18314F;
+    background-color: #18314f;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
-}
-
-/* =========================
-    Left Container
-=========================== */
-.left-container {
+  }
+  
+  /* =========================
+      Left Container
+  =========================== */
+  .left-container {
     width: 32%;
     height: 100%;
-    background-color: #0D0630;
+    background-color: #0d0630;
     display: flex;
-    flex-direction: column; /* <-- columna */
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -32,7 +32,6 @@
     box-sizing: border-box;
   }
   
-  /* Perfil */
   .profile {
     display: flex;
     flex-direction: column;
@@ -47,7 +46,6 @@
     background-color: white;
   }
   
-  /* Menú */
   .menu {
     width: 100%;
   }
@@ -77,62 +75,51 @@
   }
   
   .menu-items li:hover {
-    color: #1DB954;
+    color: #1db954;
   }
   
-  /* Web player (asumiendo que es un componente de audio visual) */
   app-web-player {
     width: 100%;
   }
   
-
-/* =========================
-    Right Container
-=========================== */
-.right-container {
+  /* =========================
+      Right Container
+  =========================== */
+  .right-container {
     width: 63%;
     height: 100%;
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     color: black;
     border-radius: 20px;
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;
-}
-
-/* =========================
-    Ajuste para los divs dentro de right-container
-=========================== */
-.right-container div {
+  }
+  
+  .right-container > div {
     width: 100%;
     background-color: lightgray;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
-}
-
-/* =========================
-    Additional Styling for the Text Input and Other Elements
-=========================== */
-.text-input-container h2,
-.text-input-container span {
-    margin: 0 0 10px 0;
-}
-
-.text-input-container h2 {
+  }
+  
+  .text-input-container h2 {
     font-size: 24px;
-}
-
-.text-input-container span {
+    margin: 0 0 10px 0;
+  }
+  
+  .text-input-container span {
     font-size: 16px;
-}
-
-.text-input-container input {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .text-input-container input {
     display: block;
     margin: 15px auto 0 auto;
     padding: 10px;
@@ -142,9 +129,10 @@
     background-color: white;
     font-size: 14px;
     box-sizing: border-box;
-}
-
-.text-input-container input::selection {
+  }
+  
+  .text-input-container input::selection {
     background: lightgreen;
     color: black;
-}
+  }
+  
