@@ -1,1 +1,31 @@
-<p>web-player works!</p>
+<div class="web-player">
+    <div class="player-cover">
+      <img src="https://via.placeholder.com/150" alt="Cover" />
+    </div>
+  
+    <div class="player-info">
+      <h3 class="song-title">Song Title</h3>
+      <p class="artist-name">Artist Name</p>
+    </div>
+  
+    <div class="player-controls">
+      <button id="prev" (click)="previousTrack()">&#9664;</button>
+      <button id="play" (click)="togglePlay()">
+        {{ isPlaying ? '⏸' : '▶️' }}
+      </button>
+      <button id="next" (click)="nextTrack()">&#9654;&#9654;</button>
+    </div>
+  
+    <div class="progress-container">
+        <input
+        type="range"
+        id="progress-bar"
+        [value]="progress"
+        min="0"
+        max="100"
+        (input)="onProgressChange($event)"
+      />
+      
+    </div>
+  </div>
+  

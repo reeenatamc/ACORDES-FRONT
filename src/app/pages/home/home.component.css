@@ -1,0 +1,150 @@
+/* =========================
+    Main Container
+=========================== */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    height: 80%;
+    padding: 30px;
+    background-color: #18314F;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+/* =========================
+    Left Container
+=========================== */
+.left-container {
+    width: 32%;
+    height: 100%;
+    background-color: #0D0630;
+    display: flex;
+    flex-direction: column; /* <-- columna */
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Perfil */
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+  }
+  
+  /* Menú */
+  .menu {
+    width: 100%;
+  }
+  
+  .menu-section {
+    margin-bottom: 20px;
+  }
+  
+  .menu-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #f0f0f0;
+  }
+  
+  .menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-items li {
+    margin: 6px 0;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .menu-items li:hover {
+    color: #1DB954;
+  }
+  
+  /* Web player (asumiendo que es un componente de audio visual) */
+  app-web-player {
+    width: 100%;
+  }
+  
+
+/* =========================
+    Right Container
+=========================== */
+.right-container {
+    width: 63%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* =========================
+    Ajuste para los divs dentro de right-container
+=========================== */
+.right-container div {
+    width: 100%;
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* =========================
+    Additional Styling for the Text Input and Other Elements
+=========================== */
+.text-input-container h2,
+.text-input-container span {
+    margin: 0 0 10px 0;
+}
+
+.text-input-container h2 {
+    font-size: 24px;
+}
+
+.text-input-container span {
+    font-size: 16px;
+}
+
+.text-input-container input {
+    display: block;
+    margin: 15px auto 0 auto;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.text-input-container input::selection {
+    background: lightgreen;
+    color: black;
+}

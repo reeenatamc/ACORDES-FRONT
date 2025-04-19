@@ -1,0 +1,60 @@
+.web-player {
+    width: 300px;
+    background-color: #1e1e2f;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .player-cover img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .player-info {
+    text-align: center;
+    margin: 15px 0;
+  }
+  
+  .song-title {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  .artist-name {
+    font-size: 14px;
+    color: #aaa;
+  }
+  
+  .player-controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .player-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .player-controls button:hover {
+    transform: scale(1.2);
+  }
+  
+  .progress-container {
+    width: 100%;
+  }
+  
+  #progress-bar {
+    width: 100%;
+    cursor: pointer;
+  }
+  
