@@ -6,51 +6,35 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { User } from '../../../interfaces/user.model';
 
 
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, CommonModule, CommonModule, HttpClientModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, CommonModule, HttpClientModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
-  loginForm!: FormGroup;
-  loading = false;
-  error = '';
+export class LoginComponent{
+  user: User = {
+    username: '',
+    password: ''
+  };
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService, // Servicio de autenticación
-    private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    // Crear el formulario de login con validaciones
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  // Método para enviar el formulario de login
-  onSubmit(): void {
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-    const { username, password } = this.loginForm.value;
-
-    this.authService.login(username, password).subscribe({
-      next: (data) => {
-        this.router.navigate(['/home']); 
+  login(): void {
+    this.authService.login(this.user).subscribe({
+      next: (response) => {
+        console.log('Login successful:', response);
+        this.authService.setToken(response.access); // Guarda el token en el localStorage
+        this.router.navigate(['/home']);  // Redirige al dashboard o página principal
       },
-      error: (error) => {
-        this.error = 'Error en las credenciales, intenta nuevamente';
-        this.loading = false;
+      error: (err) => {
+        console.error('Error logging in:', err);
       }
     });
   }
-}
+  }
+  
