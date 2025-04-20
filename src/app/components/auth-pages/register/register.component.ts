@@ -3,40 +3,76 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../interfaces/user.model';
 import { FormsModule } from '@angular/forms';
-import { ParticlesBackgroundComponent } from "../../particles-background/particles-background.component"; 
+import { ParticlesBackgroundComponent } from "../../particles-background/particles-background.component";
+import { LoaderComponent } from "../../loader/loader.component";
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, ParticlesBackgroundComponent],
+  imports: [FormsModule, ParticlesBackgroundComponent, LoaderComponent, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  user: User = { // Inicialización del objeto user
+  user: User = {
     username: '',
     password: '',
-    email: '',   // Asegúrate de inicializar los valores con los datos correctos
+    email: '',
     name: '',
     last_name: '',
     phone: ''
   };
+  isLoading = false;
+  selectedFile: File | null = null;
+  previewUrl: string | ArrayBuffer | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
 
-  register(): void {
-    // Verifica que los campos obligatorios estén llenos antes de hacer el registro
-    if (this.user.username && this.user.password) {
-      this.authService.register(this.user).subscribe({
-        next: (response) => {
-          console.log('User registered:', response);
-          this.router.navigate(['/login']);  // Redirige a la página de login
-        },
-        error: (err) => {
-          console.error('Error registering:', err);
-        }
-      });
-    } else {
-      console.error('Username and password are required!');
+  constructor(private authService: AuthService, private router: Router) { }
+
+
+  register() {
+    this.isLoading = true;
+    const formData = new FormData();
+
+    // Agregar campos del usuario al FormData
+    formData.append('username', this.user.username || '');
+    formData.append('password', this.user.password || '');
+    formData.append('email', this.user.email || '');
+    formData.append('name', this.user.name || '');
+    formData.append('last_name', this.user.last_name || '');
+    formData.append('phone', this.user.phone || '');
+
+    // Agregar la imagen si está seleccionada
+    if (this.selectedFile) {
+      formData.append('pfp', this.selectedFile, this.selectedFile.name);
     }
+
+    this.authService.register(formData).subscribe({
+      next: (response) => {
+        console.log('User registered successfully:', response);
+        setTimeout(() => {
+          this.isLoading = false;
+          this.router.navigate(['/login']);
+        }, 3000);
+      },
+      error: (err) => {
+        console.error('Error registering:', err);
+        this.isLoading = false;
+      }
+    });
   }
 
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+
+      // Opcional: mostrar vista previa
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewUrl = reader.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
+  }
 }

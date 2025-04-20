@@ -1,0 +1,54 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Esto es porque mostramos 3 tarjetas a la vez */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .slider-item {
+    min-width: 33.33%; /* Esto hace que se muestren 3 elementos por fila */
+    box-sizing: border-box;
+  }
+  
+  .slider-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+  

@@ -1,8 +1,10 @@
 <app-particles-background></app-particles-background>
-
+<div class="loader-wrapper" *ngIf="isLoading">
+  <app-loader></app-loader>
+</div>
 <div class="login-container">
   
-    <div class="content-wrapper">
+    <div class="content-wrapper" *ngIf="!isLoading">
       <div class="image-container">
         <img src="ruta_de_tu_imagen.jpg" alt="Login Image" />
       </div>
@@ -19,4 +21,6 @@
       </div>
     </div>
   </div>
+
+
   

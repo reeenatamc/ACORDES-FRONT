@@ -3,32 +3,39 @@ import { CommonModule } from '@angular/common';
 import { WebPlayerComponent } from "../../components/web-player/web-player/web-player.component";
 import { User } from '../../interfaces/user.model';
 import { AuthService } from '../../shared/services/auth.service';
+import { ApiService } from '../../shared/services/api.service'; // Asegúrate de importar ApiService
 import { Router } from '@angular/router';
+import { SliderComponent } from "../../components/slider/slider.component";
 
 
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, WebPlayerComponent],
+  imports: [CommonModule, WebPlayerComponent, SliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  currentUser: User | null = null;
-  user: any;  // O crea una interfaz User si prefieres
+  user: any = null;  // Variable para almacenar los datos del usuario
+  userSongs: any[] = [];
 
-
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.authService.getCurrentUser().subscribe(
-      (user: User) => {
-        this.user = user;
-        console.log('Current User:', this.user); // Imprimir el usuario en la consola
-      },
-      (error) => {
-        console.error('Error fetching user data:', error);
-      }
-    );
+    // Verificar si el usuario está guardado en localStorage
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (currentUser) {
+      this.user = JSON.parse(currentUser);
+      console.log('Usuario cargado desde localStorage:', this.user);
+    } else {
+      console.log('No hay usuario en localStorage');
+      // Redirigir a login si no hay usuario en localStorage
+      this.router.navigate(['/login']);
+    }
+
   }
+
+  
 }
+

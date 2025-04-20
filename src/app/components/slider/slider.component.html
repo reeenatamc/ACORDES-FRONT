@@ -1,0 +1,13 @@
+<div class="slider-container">
+    <div class="slider">
+      <div *ngFor="let item of sliderItems; let i = index" 
+           [class.active]="i >= currentIndex && i < currentIndex + 3"
+           class="slider-item">
+        <img [src]="item.image" [alt]="item.title" />
+        <div class="caption">{{ item.title }}</div>
+      </div>
+    </div>
+    <button class="prev-btn" (click)="prev()">&#8592;</button>
+    <button class="next-btn" (click)="next()">&#8594;</button>
+  </div>
+  

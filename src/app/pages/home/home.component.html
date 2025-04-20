@@ -1,9 +1,12 @@
 <div class = "home-container">
     <div class="main-container">
         <div class="left-container">
-            <div class="profile" *ngIf="currentUser">
-                <img [src]="currentUser.pfp" alt="profile" />
-                <span>Hola,<br> {{ currentUser.name }} {{ currentUser.last_name }}!</span>
+            <div class="profile" *ngIf="user">
+                <img [src]="user.pfp" alt="profile" />
+                <div class="profile-texts">
+                  <span class="username">hello, {{ user.username }}!</span>
+                  <span class="subtitle">ready to cook some music?</span>
+                </div>
               </div>
               
             <div class="menu">
@@ -31,36 +34,45 @@
         </div>
 
         <div class="right-container">
+            <!-- Primer contenedor: Input con botón de flecha -->
             <div class="text-input-container">
-                <h2>Generate music now!</h2>
-                <span>Write a few words and generate amazing music :)</span>
+              <h2>Generate music now!</h2>
+              <span class = "text">Write a few words and generate amazing music :)</span>
+              <div class="input-wrapper">
                 <input type="text" placeholder="Write a few words and generate amazing music...">
+                <button class="submit-btn">
+                  <span class="material-icons">arrow_forward</span>
+                </button>
+              </div>
             </div>
-
+      
+            <!-- Segundo contenedor: Slider (lo mantienes igual) -->
             <div class="slider-container">
                 <h2>Your music</h2>
-                <div class="slider-wrapper">
-
-                </div>
-            </div>
-
+                <app-slider></app-slider>
+              </div>
+              
+      
+            <!-- Tercer contenedor: Inspiración -->
             <div class="inspo-container">
-                <h2>
-                    Inspiration
-                </h2>
-                <span>
-                    Listen to tracks made by others and get inspired by the prompts they used.
-                </span>
-                <div class="inspo-container">
-                    <h2>trending</h2>
+              <h2>Inspiration</h2>
+              <span>Listen to tracks made by others and get inspired by the prompts they used.</span>
+              
+              <div class="inspo-items">
+                <div class="inspo-item">
+                  <img src="path/to/image1.jpg" alt="Inspiration 1">
+                  <h3>Trending</h3>
                 </div>
-                <div class="inspo-container">
-                    <h2>u might like</h2>
+                <div class="inspo-item">
+                  <img src="path/to/image2.jpg" alt="Inspiration 2">
+                  <h3>U Might Like</h3>
                 </div>
-                <div class="inspo-container">
-                    <h2>discover</h2>
+                <div class="inspo-item">
+                  <img src="path/to/image3.jpg" alt="Inspiration 3">
+                  <h3>Discover</h3>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
 </div>

@@ -18,9 +18,10 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/api/token/`, user);
   }
 
-  register(user: User): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/api/users/`, user);
+  register(userData: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}/api/register/`, userData);
   }
+  
 
   refreshToken(refreshToken: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/api/token/refresh/`, { refresh: refreshToken });

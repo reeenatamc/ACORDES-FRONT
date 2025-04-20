@@ -1,7 +1,7 @@
 <app-particles-background></app-particles-background>
 
 <div class="login-container">
-    <div class="content-wrapper">
+    <div class="content-wrapper" *ngIf="!isLoading">
         <div class="form-container">
             <form (ngSubmit)="register()">            
                 <div class="form-grid">
@@ -9,6 +9,16 @@
                         <label for="username">username</label>
                         <input type="text" id="username" [(ngModel)]="user.username" name="username" required />
                     </div>
+                    <div class="form-field">
+                        <label for="profile_picture">Profile picture</label>
+                        <input
+                          type="file"
+                          id="profile_picture"
+                          name="profile_picture"
+                          (change)="onFileSelected($event)"
+                          accept="image/*"
+                      />
+                      </div>
             
                     <div class="form-field">
                         <label for="email">email</label>
@@ -42,3 +52,7 @@
     </div>
     </div>
 </div>
+
+<div class="loader-wrapper" *ngIf="isLoading">
+    <app-loader></app-loader>
+  </div>

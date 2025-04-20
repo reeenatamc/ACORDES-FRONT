@@ -18,29 +18,32 @@ export class WebPlayerComponent implements OnInit, OnDestroy {
   audio = new Audio();
   tracks: any[] = [];
   currentUser: any;
-  progressInterval: any; // Variable para almacenar el intervalo de actualización del progreso
+  progressInterval: any;
+  userSongs: any[] = []; // Almacena las canciones del usuario
 
-  constructor(private authService: AuthService, private apiService: ApiService) {}
+  constructor(private authService: AuthService, private apiService: ApiService) { }
 
   ngOnInit() {
-    this.loadSongs();  // Cargar canciones al iniciar el componente
+    this.loadUserSongs();  // Cargar canciones al iniciar el componente
     this.loadCurrentUser();  // Cargar los datos del usuario
-  }
-
-  loadSongs() {
-    this.apiService.getSongs().subscribe((data: any) => {
-      console.log('Datos de la API:', data); // Verifica la estructura
-      this.tracks = data; // Asigna los datos obtenidos a tracks
-      this.loadTrack(this.currentTrackIndex); // Cargar la primera canción
-    });
   }
 
   loadCurrentUser() {
     const user = localStorage.getItem('currentUser');
     if (user) {
       this.currentUser = JSON.parse(user);
-      console.log('Usuario actual:', this.currentUser);
     }
+  }
+  loadUserSongs(): void {
+    this.apiService.getUserSongs().subscribe({
+      next: (songs) => {
+        console.log('Canciones del usuario:', songs);
+        this.userSongs = songs;
+      },
+      error: (err) => {
+        console.error('Error al obtener canciones del usuario:', err);
+      }
+    });
   }
 
   togglePlay() {
@@ -60,12 +63,12 @@ export class WebPlayerComponent implements OnInit, OnDestroy {
     const track = this.tracks[index];
     const audioFileUrl = track.audio_file;
     console.log('URL del archivo de audio:', audioFileUrl);
-    
+
     if (!audioFileUrl) {
       console.error('La URL del archivo de audio no es válida');
       return;
     }
-    
+
     this.audio.src = audioFileUrl;
     this.audio.load();
     this.audio.onloadedmetadata = () => {
