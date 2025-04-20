@@ -17,26 +17,39 @@ import { ParticlesBackgroundComponent } from "../../particles-background/particl
   imports: [ReactiveFormsModule, CommonModule, CommonModule, HttpClientModule, FormsModule, ParticlesBackgroundComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
-  
 })
-export class LoginComponent{
+export class LoginComponent {
   user: User = {
     username: '',
     password: ''
   };
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   login(): void {
     this.authService.login(this.user).subscribe({
       next: (response) => {
         console.log('Login successful:', response);
-        this.authService.setToken(response.access); // Guarda el token en el localStorage
-        this.router.navigate(['/home']);  // Redirige al dashboard o página principal
+        this.authService.setToken(response.access);  // Guarda el token de acceso
+  
+        // Verifica el token que se guarda
+        console.log('Access Token:', response.access);
+  
+        // Obtener los datos del usuario después de iniciar sesión
+        this.authService.getCurrentUser().subscribe({
+          next: (user) => {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.router.navigate(['/home']);
+          },
+          error: (err) => {
+            console.error('Error al obtener datos del usuario:', err);
+          }
+        });
       },
       error: (err) => {
         console.error('Error logging in:', err);
       }
     });
   }
-  }
   
+}
+

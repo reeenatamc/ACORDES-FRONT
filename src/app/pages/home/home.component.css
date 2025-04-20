@@ -1,138 +1,134 @@
-/* =========================
-    Main Container
-=========================== */
+/* Pantalla completa con fondo */
+.home-container {
+    height: 100vh;
+    width: 100vw;
+    background: #E6F9AF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal centrado */
 .main-container {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
+    width: 80%;
     height: 80%;
-    padding: 30px;
-    background-color: #18314f;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    background-color: #18314F;
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    box-sizing: border-box;
     border-radius: 20px;
-  }
-  
-  /* =========================
-      Left Container
-  =========================== */
-  .left-container {
-    width: 32%;
-    height: 100%;
-    background-color: #0d0630;
+}
+
+/* Contenedor izquierdo */
+.left-container {
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    color: white;
+    padding: 1rem;
+    background-color: #0D0630;
     border-radius: 20px;
-    padding: 20px;
     box-sizing: border-box;
-  }
-  
-  .profile {
+    overflow: hidden;
+}
+.left-container > .profile {
+    flex-shrink: 0;
+}
+
+.left-container > .menu {
+    flex-grow: 1;
+    overflow-y: auto; /* Por si el menú es largo */
+}
+
+.left-container > app-web-player {
+    flex-shrink: 0;
+}
+
+/* Perfil */
+.profile {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 10px;
-  }
-  
-  .profile img {
+    gap: 2rem;
+    background-color: #18314F;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 0.5rem;
+}
+
+
+.profile img {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    background-color: white;
-  }
-  
-  .menu {
-    width: 100%;
-  }
-  
-  .menu-section {
-    margin-bottom: 20px;
-  }
-  
-  .menu-title {
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #f0f0f0;
-  }
-  
-  .menu-items {
+    border-radius: 15px ;
+    object-fit: cover;
+    background-color: #555; /* Por si no carga */
+}
+
+.profile span {
+    color: white;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem; /* Espacio entre los elementos */
+    font-size: 0.75rem; /* Tamaño general más pequeño */
+    padding-top: 4px; /* Reducción del padding superior */
+    justify-content: center; /* Centrado vertical */
+    height: 100%; /* Asegura que el contenedor ocupe el espacio disponible */
+}
+
+.menu-title {
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+}
+
+.menu-items {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .menu-items li {
-    margin: 6px 0;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  
-  .menu-items li:hover {
-    color: #1db954;
-  }
-  
-  app-web-player {
-    width: 100%;
-  }
-  
-  /* =========================
-      Right Container
-  =========================== */
-  .right-container {
-    width: 63%;
-    height: 100%;
-    background-color: white;
+    color: #ccc;
     display: flex;
     flex-direction: column;
+    gap: 0.3rem;
+    text-align: center; /* Centrado de texto */
+}
+
+.menu-items li {
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
     align-items: center;
-    color: black;
-    border-radius: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-  
-  .right-container > div {
-    width: 100%;
-    background-color: lightgray;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  .text-input-container h2 {
-    font-size: 24px;
-    margin: 0 0 10px 0;
-  }
-  
-  .text-input-container span {
-    font-size: 16px;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  .text-input-container input {
-    display: block;
-    margin: 15px auto 0 auto;
-    padding: 10px;
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: white;
+    gap: 0.3rem;
     font-size: 14px;
+}
+
+.menu-items li:hover {
+    color: #fff;
+}
+
+.menu-items li .material-icons {
+    font-size: 15px; /* Reduce el tamaño de los íconos */
+}
+
+  
+
+/* Web player ya está listo, se ajusta automáticamente */
+
+/* Contenedor derecho */
+.right-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
     box-sizing: border-box;
-  }
-  
-  .text-input-container input::selection {
-    background: lightgreen;
-    color: black;
-  }
-  
+    background-color: white;
+    border-radius: 20px;
+    padding: 0 1rem 0 1rem;
+}

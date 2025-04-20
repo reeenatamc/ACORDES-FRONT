@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
@@ -37,5 +37,18 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('access_token');
   }
+
+  getCurrentUser() {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      throw new Error('Token no encontrado');
+    }
+    return this.http.get('http://localhost:8000/api/users/me/', {
+      headers: {
+        Authorization: `Bearer ${token}`  // Envía el token en la cabecera
+      }
+    });
+  }
+  
 
 }

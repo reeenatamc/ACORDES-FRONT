@@ -1,60 +1,65 @@
-<div class="main-container">
-    <div class="left-container">
-        <div class="profile">
-            <img>
-            <span>hola, renata!</span>
+<div class = "home-container">
+    <div class="main-container">
+        <div class="left-container">
+            <div class="profile" *ngIf="currentUser">
+                <img [src]="currentUser.pfp" alt="profile" />
+                <span>Hola,<br> {{ currentUser.name }} {{ currentUser.last_name }}!</span>
+              </div>
+              
+            <div class="menu">
+                <div class="menu-section">
+                    <ul class="menu-items">
+                        <li><span class="material-icons">info</span> About</li>
+                        <li><span class="material-icons">settings</span> Settings</li>
+                        <li><span class="material-icons">help_outline</span> Help & FAQ</li>
+                        <li><span class="material-icons">logout</span> Logout</li>
+                      </ul>
+                      
+                </div>
+
+                <div class="menu-section">
+                    <div class="menu-title">Library</div>
+                    <ul class="menu-items">
+                        <li><span class="material-icons">library_music</span> Genres</li>
+                        <li><span class="material-icons">favorite</span> Favorites</li>
+                        <li><span class="material-icons">queue_music</span> My Music</li>
+                      </ul>
+                      
+                </div>
+            </div>
+            <app-web-player></app-web-player>
         </div>
-        <div class="menu">
-            <div class="menu-section">
-                <div class="menu-title">Menu</div>
-                <ul class="menu-items">
-                    <li>About</li>
-                    <li>Settings</li>
-                    <li>Help & FAQ</li>
-                </ul>
+
+        <div class="right-container">
+            <div class="text-input-container">
+                <h2>Generate music now!</h2>
+                <span>Write a few words and generate amazing music :)</span>
+                <input type="text" placeholder="Write a few words and generate amazing music...">
             </div>
 
-            <div class="menu-section">
-                <div class="menu-title">Library</div>
-                <ul class="menu-items">
-                    <li>Genres</li>
-                    <li>Favorites</li>
-                    <li>My Music</li>
-                </ul>
+            <div class="slider-container">
+                <h2>Your music</h2>
+                <div class="slider-wrapper">
+
+                </div>
             </div>
-        </div>
-        <app-web-player></app-web-player>
-    </div>
 
-    <div class="right-container">
-        <div class="text-input-container">
-            <h2>Generate music now!</h2>
-            <span>Write a few words and generate amazing music :)</span>
-            <input type="text" placeholder="Write a few words and generate amazing music...">
-        </div>
-
-        <div class="slider-container">
-            <h2>Your music</h2>
-            <div class="slider-wrapper">
-
-            </div>
-        </div>
-
-        <div class="inspo-container">
-            <h2>
-                Inspiration
-            </h2>
-            <span>
-                Listen to tracks made by others and get inspired by the prompts they used.
-            </span>
             <div class="inspo-container">
-                <h2>trending</h2>
-            </div>
-            <div class="inspo-container">
-                <h2>u might like</h2>
-            </div>
-            <div class="inspo-container">
-                <h2>discover</h2>
+                <h2>
+                    Inspiration
+                </h2>
+                <span>
+                    Listen to tracks made by others and get inspired by the prompts they used.
+                </span>
+                <div class="inspo-container">
+                    <h2>trending</h2>
+                </div>
+                <div class="inspo-container">
+                    <h2>u might like</h2>
+                </div>
+                <div class="inspo-container">
+                    <h2>discover</h2>
+                </div>
             </div>
         </div>
     </div>

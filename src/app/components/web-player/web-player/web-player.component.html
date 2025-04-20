@@ -1,23 +1,29 @@
 <div class="web-player">
     <div class="player-cover">
-      <img src="https://via.placeholder.com/150" alt="Cover" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Album_cover_for_The_Beatles_-_Abbey_Road.jpg" alt="Cover" />
     </div>
+    
   
     <div class="player-info">
-      <h3 class="song-title">Song Title</h3>
-      <p class="artist-name">Artist Name</p>
+      <!-- Títulos dinámicos -->
+      <h3 class="song-title">{{ tracks[currentTrackIndex]?.song_name || 'Song Title' }}</h3>
+      <p class="artist-name">{{ tracks[currentTrackIndex]?.user?.name || 'Artist Name' }}</p> <!-- Usamos el operador de encadenamiento seguro -->
     </div>
   
     <div class="player-controls">
-      <button id="prev" (click)="previousTrack()">&#9664;</button>
-      <button id="play" (click)="togglePlay()">
-        {{ isPlaying ? '⏸' : '▶️' }}
+      <button id="prev" (click)="previousTrack()">
+        <span class="material-icons">skip_previous</span>
       </button>
-      <button id="next" (click)="nextTrack()">&#9654;&#9654;</button>
+      <button id="play" (click)="togglePlay()">
+        <span class="material-icons">{{ isPlaying ? 'pause' : 'play_arrow' }}</span>
+      </button>
+      <button id="next" (click)="nextTrack()">
+        <span class="material-icons">skip_next</span>
+      </button>
     </div>
   
     <div class="progress-container">
-        <input
+      <input
         type="range"
         id="progress-bar"
         [value]="progress"
@@ -25,7 +31,6 @@
         max="100"
         (input)="onProgressChange($event)"
       />
-      
     </div>
   </div>
   

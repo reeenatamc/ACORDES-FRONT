@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebPlayerComponent } from "../../components/web-player/web-player/web-player.component";
+import { User } from '../../interfaces/user.model';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -9,31 +13,22 @@ import { WebPlayerComponent } from "../../components/web-player/web-player/web-p
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  currentUser: User | null = null;
+  user: any;  // O crea una interfaz User si prefieres
 
-  musicItems = ['Track 1', 'Track 2', 'Track 3', 'Track 4', 'Track 5', 'Track 6', 'Track 7'];
-  currentIndex = 0;
 
-  get visibleItems(): string[] {
-    const visible: string[] = [];
-    for (let i = 0; i < 5; i++) {
-      const index = (this.currentIndex + i) % this.musicItems.length;
-      visible.push(this.musicItems[index]);
-    }
-    return visible;
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.getCurrentUser().subscribe(
+      (user: User) => {
+        this.user = user;
+        console.log('Current User:', this.user); // Imprimir el usuario en la consola
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
   }
-
-  getBoxClass(index: number): string {
-    return `box-${index}`; // Puedes mapear estilos según posición aquí
-  }
-
-  prevSlide() {
-    this.currentIndex = (this.currentIndex - 1 + this.musicItems.length) % this.musicItems.length;
-  }
-
-  nextSlide() {
-    this.currentIndex = (this.currentIndex + 1) % this.musicItems.length;
-  }
-
-
 }
