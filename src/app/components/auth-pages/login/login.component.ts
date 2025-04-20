@@ -7,15 +7,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { User } from '../../../interfaces/user.model';
+import { ParticlesBackgroundComponent } from "../../particles-background/particles-background.component";
 
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, CommonModule, HttpClientModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, CommonModule, HttpClientModule, FormsModule, ParticlesBackgroundComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  
 })
 export class LoginComponent{
   user: User = {

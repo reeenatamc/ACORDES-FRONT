@@ -1,0 +1,9 @@
+.particles-container {
+    position: fixed; /* <-- Importante: fixed para cubrir todo el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Detrás de todo */
+  }
+  

@@ -1,10 +1,22 @@
-<form (ngSubmit)="login()">
-    <label for="username">Username:</label>
-    <input type="text" id="username" [(ngModel)]="user.username" name="username" required>
+<app-particles-background></app-particles-background>
+
+<div class="login-container">
   
-    <label for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="user.password" name="password" required>
+    <div class="content-wrapper">
+      <div class="image-container">
+        <img src="ruta_de_tu_imagen.jpg" alt="Login Image" />
+      </div>
+      <div class="form-container">
+        <form (ngSubmit)="login()">
+          <label for="username">username</label>
+          <input type="text" id="username" [(ngModel)]="user.username" name="username" required />
   
-    <button type="submit">Login</button>
-  </form>
+          <label for="password">password</label>
+          <input type="password" id="password" [(ngModel)]="user.password" name="password" required />
+  
+          <button type="submit">login <3 !</button>
+        </form>
+      </div>
+    </div>
+  </div>
   

@@ -1,0 +1,99 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent; /* transparente para ver las partículas */
+    flex-direction: column;
+    position: relative; /* Necesario para estar sobre el fondo */
+    z-index: 1; /* Por encima del fondo */
+  }
+
+h2 {
+    font-size: 40px;
+    margin: 0 auto 20px auto;
+    font-weight: bolder;
+    color: #384E77;
+    margin: 0;
+    padding: 10px 0;  /* Espacio alrededor del título */
+    text-align: left;  /* Alinea el texto a la izquierda */
+    width: 100%;  /* Asegura que el h2 ocupe todo el ancho disponible */
+}
+
+/* Contenedor de la sección principal */
+.content-wrapper {
+    display: flex;
+    background-color: #E6F9AF;  /* Fondo blanco para el contenedor principal */
+    overflow: hidden;
+    width: 50%;  /* Ajusta el tamaño al 50% de la pantalla */
+    height: 50%;  /* Ajusta el tamaño al 50% de la pantalla */
+    padding: 50px;  /* Agregar padding para que haya espacio alrededor */
+}
+
+/* Contenedor de la imagen */
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;  /* Ajusta la imagen para que cubra el área sin distorsión */
+}
+
+/* Contenedor del formulario */
+.form-container {
+    flex: 1;  /* Ocupa el 50% del espacio */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;  /* Fondo blanco */
+    border-radius: 10px;  /* Bordes más pequeños en el formulario */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 20px;  /* Título de los campos */
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background-color: #0D0630;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+button {
+    background-color: transparent;  /* Sin fondo */
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;  /* Eliminar borde */
+    cursor: pointer;
+    transition: font-size 0.3s ease; /* Transición suave en el tamaño del texto */
+    margin-top: 25px;
+}
+
+button:hover {
+    font-size: 18px;  /* Aumenta el tamaño del texto al pasar el mouse */
+}
+
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.form-field {
+    flex: 1 1 calc(50% - 10px); /* Dos columnas con espacio entre ellas */
+    display: flex;
+    flex-direction: column;
+}

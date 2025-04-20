@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../interfaces/user.model';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { ParticlesBackgroundComponent } from "../../particles-background/particles-background.component"; 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule],
+  imports: [FormsModule, ParticlesBackgroundComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
